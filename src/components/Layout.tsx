@@ -15,12 +15,12 @@ const Layout: React.FC = () => {
   };
 
   return (
-    <div className="flex min-h-screen w-full bg-dark-bg text-dark-text light:bg-light-bg light:text-light-text">
+    <div className="grid min-h-screen w-full bg-dark-bg text-dark-text light:bg-light-bg light:text-light-text md:grid-cols-[18rem_1fr]">
       {/* Sidebar */}
       <Sidebar isOpen={isSidebarOpen} onClose={closeSidebar} />
 
       {/* Main Content */}
-      <div className="flex flex-1 flex-col h-full w-full overflow-hidden md:ml-72 transition-all duration-300 ease-in-out">
+      <div className="grid grid-rows-[auto_1fr] h-full overflow-hidden transition-all duration-300 ease-in-out">
         <Header onMenuClick={toggleSidebar} title="Overview" />
         <Dashboard />
       </div>

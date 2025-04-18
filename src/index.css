@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Light mode colors */
+  --color-light-bg: #ffffff;
+  --color-light-sidebar: #f9fafb;
+  --color-light-border: #e5e7eb;
+  --color-light-text: #111827;
+  --color-light-textMuted: #6b7280;
+  --color-light-accent: #3b82f6;
+  --color-light-hover: #f3f4f6;
+  --color-light-card: #ffffff;
+  --color-light-placeholder: #e5e7eb;
+
+  /* Dark mode colors */
+  --color-dark-bg: #09090b;
+  --color-dark-sidebar: #18181b;
+  --color-dark-border: #27272a;
+  --color-dark-text: #f9fafb;
+  --color-dark-textMuted: #a1a1aa;
+  --color-dark-accent: #3b82f6;
+  --color-dark-hover: #27272a;
+  --color-dark-card: #18181b;
+  --color-dark-placeholder: #27272a;
+}
+
+/* Global Font */
+body {
+  font-family: 'Inter', sans-serif;
+  height: 100vh; /* Full viewport height */
+  min-height: 48rem; /* Minimum height to prevent squishing */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Theme transitions */
+.theme-transition {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Active navigation indicator */
+.nav-active-indicator {
+  position: absolute;
+  left: -0.75rem; /* Adjusted to be outside the padding */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 24px;
+  border-radius: 0 4px 4px 0;
+}
+
+/* Custom scrollbar for sidebar */
+.sidebar-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  background: rgba(161, 161, 170, 0.3);
+  border-radius: 10px;
+}
+
+.light-theme .sidebar-scroll::-webkit-scrollbar-thumb {
+  background: rgba(107, 114, 128, 0.3);
+}
+
+.sidebar-scroll:hover::-webkit-scrollbar-thumb {
+  background: rgba(161, 161, 170, 0.5);
+}
+
+.light-theme .sidebar-scroll:hover::-webkit-scrollbar-thumb {
+  background: rgba(107, 114, 128, 0.5);
+}
+
+/* Focus ring offset color */
+.light-theme {
+  --tw-ring-offset-color: var(--color-light-bg);
+}
+
+.dark-theme {
+  --tw-ring-offset-color: var(--color-dark-bg);
+}
+
+/* Helper for hiding scrollbar visually but keeping functionality */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Blurred glow effect for hover */
+.hover-glow {
+  position: relative;
+  z-index: 0; /* Ensure content is above the glow */
+}
+
+.hover-glow::before {
+  content: '';
+  position: absolute;
+  inset: -2px; /* Adjust size of glow */
+  z-index: -1;
+  background: rgba(59, 130, 246, 0.15); /* Use theme color */
+  filter: blur(8px); /* Blur amount */
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: inherit; /* Match parent's border radius */
+}
+
+.light-theme .hover-glow::before {
+  background: rgba(59, 130, 246, 0.15);
+}
+
+.group:hover .hover-glow::before,
+button:hover .hover-glow::before {
+  opacity: 1;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  50% { opacity: .5; }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
